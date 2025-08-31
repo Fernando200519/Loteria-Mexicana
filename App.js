@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import HomeScreen from "./src/screens/HomeScreen";
+import SplashScreen from "./src/screens/SplashScreen";
+import GameScreen from "./src/screens/GameScreen"; // esta será tu pantalla de cartas
 
 export default function App() {
-  const [started, setStarted] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
   return (
     <View style={{ flex: 1 }}>
-      {!started ? (
-        <HomeScreen onStart={() => setStarted(true)} />
+      {showSplash ? (
+        <SplashScreen onFinish={() => setShowSplash(false)} />
       ) : (
-        // Aquí luego pondremos la pantalla del juego
-        <HomeScreen onStart={() => {}} />
+        <GameScreen />
       )}
     </View>
   );
